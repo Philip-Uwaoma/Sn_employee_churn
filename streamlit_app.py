@@ -206,7 +206,7 @@ elif option == "Company Prediction":
     prediction_percentages = []
     names = []
     for _, row in department_df.iterrows():
-        row = transform_dataframe(employee_data)
+        row = transform_dataframe(row)
         #full_name = row['full_name']
         #work_status = row['Work Status']
         details = row['details']
