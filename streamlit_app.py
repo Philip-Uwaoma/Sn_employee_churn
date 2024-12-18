@@ -176,8 +176,8 @@ if option == "Individual Prediction":
     prediction_percentage, prediction_label, summary, feature_analysis, color = few_shot_prediction(details)
 
     # Display Prediction Results
-    st.markdown(f"**{selected_name}**")
-    st.write(lambda employee_data: f"Company: {employee_data['Company Name']} / Department: {employee_data['Department']} / Status: {employee_data['Work Status']}")
+    st.write(f"**{selected_name}**")
+    st.write(f"Company: {employee_data['Company Name']} / Department: {employee_data['Department']} / Status: {employee_data['Work Status']}")
     st.write(f"### Prediction: {prediction_percentage}%")
     fig, ax = plt.subplots()
     wedges, _ = ax.pie([prediction_percentage, 100 - prediction_percentage], startangle=90, colors=[color, "lightgrey"], wedgeprops=dict(width=0.3))
