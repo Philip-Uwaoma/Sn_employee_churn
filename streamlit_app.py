@@ -21,7 +21,7 @@ client = AzureOpenAI(
 # Function to fetch and process CSV data
 @st.cache_data
 def load_and_process_data():
-    url = "https://raw.githubusercontent.com/Philip-Uwaoma/Sn_employee_churn/main/Employee_hcmatrix_data 5.csv"  
+    url = "https://github.com/Philip-Uwaoma/Sn_employee_churn/main/Employee_hcmatrix_data 5.csv"  
     df = pd.read_csv(url)
     # Process the DataFrame
     filtered_df = process_dataframe(df)
@@ -56,43 +56,6 @@ def transform_dataframe(df):
     new_df = df[['full_name', 'Work Status', 'details']]
     
     return new_df
-
-'''def few_shot_prediction(employee_data):
-    prompt = f"""
-    Predict churn likelihood for the following employee:
-    Employee data: {employee_data}
-    """
-    response = client.chat.completions.create(
-        model="gpt-4o-new",
-        messages=[
-            {"role": "system", "content": "You are a machine learning model predicting employee churn."},
-            {"role": "user", "content": prompt}
-        ],
-        max_tokens=700,
-        temperature=0.1
-    )
-    content = response.choices[0].message.content.strip()
-    # Parse response
-    try:
-        prediction_percentage = float(content.split("Likelihood of Churn:")[1].split("%")[0].strip())
-        summary = content.split("Summary:")[1].split("Key Features Analysis:")[0].strip()
-        feature_analysis = content.split("Key Features Analysis:")[1].strip()
-        if prediction_percentage < 25:
-            prediction_label = "Not likely to churn"
-            color = "green"
-        elif 25 <= prediction_percentage <= 50:
-            prediction_label = "Less likely to churn"
-            color = "lightgreen"
-        elif 50 < prediction_percentage <= 75:
-            prediction_label = "Likely to churn"
-            color = "yellow"
-        else:
-            prediction_label = "Very likely to churn"
-            color = "red"
-    except:
-        prediction_percentage, prediction_label, summary, feature_analysis = "Error", "Error", "Parsing Error", ""
-        color = "grey"
-    return prediction_percentage, prediction_label, summary, feature_analysis, color'''
 
 
 def few_shot_prediction(employee_data):
