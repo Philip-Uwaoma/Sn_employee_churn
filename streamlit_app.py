@@ -21,8 +21,9 @@ client = AzureOpenAI(
 # Function to fetch and process CSV data
 @st.cache_data
 def load_and_process_data():
-    url = "https://github.com/Philip-Uwaoma/Sn_employee_churn/blob/master/Employee_hcmatrix_data 5.csv"  
-    df = pd.read_csv(url,  parse_dates=["Date Of Birth", "Hire Date"])
+    #url = "https://github.com/Philip-Uwaoma/Sn_employee_churn/blob/master/Employee_hcmatrix_data 5.csv"  
+    file = "Employee_hcmatrix_data 5.csv"
+    df = pd.read_csv(file,  parse_dates=["Date Of Birth", "Hire Date"])
     # Process the DataFrame
     filtered_df = process_dataframe(df)
     return filtered_df
