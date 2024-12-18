@@ -206,10 +206,13 @@ elif option == "Company Prediction":
     prediction_percentages = []
     names = []
     for _, row in department_df.iterrows():
-        row = transform_dataframe(row)
+        single_row_df = pd.DataFrame([row])  # Convert the row back to a DataFrame
+        transformed_row = transform_dataframe(single_row_df)  # Now process the row as DataFrame
+        details = transformed_row['details'].iloc[0]  # Get the transformed 'details' column value
+        #row = transform_dataframe(row)
         #full_name = row['full_name']
         #work_status = row['Work Status']
-        details = row['details']
+        #details = row['details']
         prediction_percentage, _, _, _, _ = few_shot_prediction(details)
         prediction_percentages.append(prediction_percentage)
         names.append(row['full_name'])
