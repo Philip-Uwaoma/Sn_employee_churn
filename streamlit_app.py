@@ -130,7 +130,7 @@ def few_shot_prediction(employee_data):
 
     # Extract the content from the response
     content = response.choices[0].message.content.strip()
-    print(content)
+    #print(content)
 
     # Initialize default return values
     prediction_percentage = 0
@@ -194,8 +194,17 @@ option = st.sidebar.selectbox("Choose Prediction Type", ["Individual Prediction"
 
 if option == "Individual Prediction":
     selected_name = st.sidebar.selectbox("Select Employee Name", filtered_df['full_name'].unique())
-    employee_data = filtered_df[filtered_df['full_name'] == selected_name].iloc[0]
-    row = transform_dataframe(employee_data)
+    #employee_data = filtered_df[filtered_df['full_name'] == selected_name].iloc[0]
+    # Select employee data as a DataFrame instead of a Series
+    employee_data = filtered_df[filtered_df['full_name'] == selected_name]
+    
+    # Call transform_dataframe correctly
+    transformed_df = transform_dataframe(employee_data)
+    
+    # Extract the first row (transformed data)
+    row = transformed_df.iloc[0]
+    
+    #row = transform_dataframe(employee_data)
     full_name = row['full_name']
     work_status = row['Work Status']
     details = row['details']
@@ -216,7 +225,7 @@ if option == "Individual Prediction":
 
     st.write("### FEATURE ANALYSIS")
     analysis_table = [line.split(": ") for line in feature_analysis.split("\n") if ": " in line]
-    feature_df = pd.DataFrame(analysis_table, columns=["Feature", "Relationship & Reason"])
+    feature_df = pd.DataFrame(analysis_table, columns=["Feature", "Relationship", "Reason"])
     st.table(feature_df)
 
 elif option == "Company Prediction":
@@ -252,8 +261,16 @@ elif option == "Company Prediction":
 
     # Clickable Names
     selected_name = st.selectbox("View Individual Prediction", names)
-    employee_data = department_df[department_df['full_name'] == selected_name].iloc[0]
-    row = transform_dataframe(employee_data)
+    # Select employee data as a DataFrame instead of a Series
+    employee_data = filtered_df[filtered_df['full_name'] == selected_name]
+    
+    # Call transform_dataframe correctly
+    transformed_df = transform_dataframe(employee_data)
+    
+    # Extract the first row (transformed data)
+    row = transformed_df.iloc[0]
+    #employee_data = department_df[department_df['full_name'] == selected_name].iloc[0]
+    #row = transform_dataframe(employee_data)
     #full_name = row['full_name']
     #work_status = row['Work Status']
     details = row['details']
@@ -274,5 +291,5 @@ elif option == "Company Prediction":
 
     st.write("### FEATURE ANALYSIS")
     analysis_table = [line.split(": ") for line in feature_analysis.split("\n") if ": " in line]
-    feature_df = pd.DataFrame(analysis_table, columns=["Feature", "Relationship & Reason"])
+    feature_df = pd.DataFrame(analysis_table, columns=["Feature", "Relationship", "Reason"])
     st.table(feature_df)
