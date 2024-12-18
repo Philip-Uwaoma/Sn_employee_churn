@@ -158,7 +158,7 @@ option = st.sidebar.selectbox("Choose Prediction Type", ["Individual Prediction"
 
 if option == "Individual Prediction":
     selected_name = st.sidebar.selectbox("Select Employee Name", filtered_df['full_name'].unique())
-    #employee_data = filtered_df[filtered_df['full_name'] == selected_name].iloc[0]
+    employee_data2 = filtered_df[filtered_df['full_name'] == selected_name].iloc[0]
     # Select employee data as a DataFrame instead of a Series
     employee_data = filtered_df[filtered_df['full_name'] == selected_name]
     
@@ -177,7 +177,7 @@ if option == "Individual Prediction":
 
     # Display Prediction Results
     st.write(f"**{selected_name}**")
-    st.write(f"Company: {employee_data['Company Name']} / Department: {employee_data['Department']} / Status: {employee_data['Work Status']}")
+    st.write(f"Company: {employee_data2['Company Name']} / Department: {employee_data2['Department']} / Status: {employee_data2['Work Status']}")
     st.write(f"### Prediction: {prediction_percentage}%")
     fig, ax = plt.subplots()
     wedges, _ = ax.pie([prediction_percentage, 100 - prediction_percentage], startangle=90, colors=[color, "lightgrey"], wedgeprops=dict(width=0.3))
@@ -236,7 +236,7 @@ elif option == "Company Prediction":
     
     # Extract the first row (transformed data)
     row = transformed_df.iloc[0]
-    #employee_data = department_df[department_df['full_name'] == selected_name].iloc[0]
+    employee_data2 = department_df[department_df['full_name'] == selected_name].iloc[0]
     #row = transform_dataframe(employee_data)
     #full_name = row['full_name']
     #work_status = row['Work Status']
@@ -246,7 +246,7 @@ elif option == "Company Prediction":
 
     # Display Results
     st.markdown(f"**{selected_name}**")
-    st.write(f"Company: {employee_data['Company Name']} / Department: {employee_data['Department']} / Status: {employee_data['Work Status']}")
+    st.write(f"Company: {employee_data2['Company Name']} / Department: {employee_data2['Department']} / Status: {employee_data2['Work Status']}")
     st.write(f"### Prediction: {prediction_percentage}%")
     fig, ax = plt.subplots()
     wedges, _ = ax.pie([prediction_percentage, 100 - prediction_percentage], startangle=90, colors=[color, "lightgrey"], wedgeprops=dict(width=0.3))
