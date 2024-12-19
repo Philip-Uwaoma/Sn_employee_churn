@@ -72,7 +72,7 @@ def few_shot_prediction(employee_data):
         - "Likely to churn" (if prediction is 50%-75%),
         - "Very likely to churn" (if prediction is above 75%).
     - A brief summary (titled "Summary:") explaining the prediction.
-    - An analysis of key features (titled "Key Features Analysis:") in the format:
+    - An analysis of all the features (titled "Key Features Analysis:") in the format:
       "feature: positive relationship (or negative relationship): reason".
       
     Employee data: {employee_data}
