@@ -179,7 +179,7 @@ if option == "Individual Prediction":
     st.write(f"**{selected_name}**")
     st.write(f"Company: {employee_data2['Company Name']} / Department: {employee_data2['Department']} / Status: {employee_data2['Work Status']}")
     st.write(f"### Prediction: {prediction_percentage}%")
-    fig, ax = plt.subplots(figsize=(3, 3))
+    fig, ax = plt.subplots(figsize=(2, 2))
     wedges, _ = ax.pie([prediction_percentage, 100 - prediction_percentage], startangle=90, colors=[color, "lightgrey"], wedgeprops=dict(width=0.3))
     plt.title(prediction_label)
     st.pyplot(fig)
