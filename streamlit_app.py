@@ -185,7 +185,7 @@ if option == "Individual Prediction":
     #ax.set_position([0.25, 0.25, 0.25, 0.25])  # Position the axes in the center half of the page
     wedges, _ = ax.pie([prediction_percentage, 100 - prediction_percentage], startangle=90, colors=[color, "lightgrey"], wedgeprops=dict(width=0.3))
     # Adjust the plot area to occupy only one-fourth of the page and center it
-    plt.title(prediction_label, y=1.05)
+    plt.title(prediction_label, y=1.05, fontsize=4)
     # Adjust the plot area to occupy only one-fourth of the page and center it
     fig.subplots_adjust(left=0.35, right=0.65, top=0.65, bottom=0.35)
     #fig.subplots_adjust(left=0.4, right=0.6, top=0.6, bottom=0.4)
