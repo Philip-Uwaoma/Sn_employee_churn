@@ -256,9 +256,11 @@ elif option == "Company Prediction":
     st.markdown(f"**{selected_name}**")
     st.write(f"Company: {employee_data2['Company Name']} / Department: {employee_data2['Department']} / Status: {employee_data2['Work Status']}")
     st.write(f"### Prediction: {prediction_percentage}%")
-    fig, ax = plt.subplots(figsize=(4, 4))
+    fig, ax = plt.subplots(figsize=(1.5, 1.5)) 
     wedges, _ = ax.pie([prediction_percentage, 100 - prediction_percentage], startangle=90, colors=[color, "lightgrey"], wedgeprops=dict(width=0.3))
-    plt.title(prediction_label)
+    fig.text(0.5, 0.2, prediction_label, ha='center', fontsize=15)
+    fig.subplots_adjust(left=0.35, right=0.65, top=0.65, bottom=0.35)
+    #plt.title(prediction_label)
     st.pyplot(fig)
 
     st.write("### Summary")
