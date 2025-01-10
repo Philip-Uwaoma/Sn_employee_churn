@@ -181,11 +181,11 @@ if option == "Individual Prediction":
     st.write(f"### Prediction: {prediction_percentage}%")
     #st.write(f"### Label: {prediction_label}")
     #fig, ax = plt.subplots(figsize=(2, 2))
-    fig, ax = plt.subplots(figsize=(1.75, 1.75))  # Larger figure size to scale to center
+    fig, ax = plt.subplots(figsize=(1.5, 1.5))  # Larger figure size to scale to center
     #ax.set_position([0.25, 0.25, 0.25, 0.25])  # Position the axes in the center half of the page
     wedges, _ = ax.pie([prediction_percentage, 100 - prediction_percentage], startangle=90, colors=[color, "lightgrey"], wedgeprops=dict(width=0.3))
     # Adjust the plot area to occupy only one-fourth of the page and center it
-    plt.title(prediction_label)
+    plt.title(prediction_label, fontsize=10)
     # Adjust the plot area to occupy only one-fourth of the page and center it, y=1.05, fontsize=5
     fig.subplots_adjust(left=0.35, right=0.65, top=0.65, bottom=0.35)
     #fig.subplots_adjust(left=0.4, right=0.6, top=0.6, bottom=0.4)
